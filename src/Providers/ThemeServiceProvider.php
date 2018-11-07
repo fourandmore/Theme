@@ -1,35 +1,36 @@
-<?php
- 
-namespace Theme\Providers;
- 
-use IO\Helper\TemplateContainer;
-use IO\Helper\ComponentContainer;
-use Plenty\Plugin\Events\Dispatcher;
-use Plenty\Plugin\ServiceProvider;
-use Plenty\Plugin\Templates\Twig;
- 
-class ThemeServiceProvider extends ServiceProvider
-{
-  const PRIORITY = 0;
- 
-	/**
-	 * Register the service provider.
-	 */
-	public function register()
-	{
- 
-	}
- 
-    /**
-	 * Boot a template for the basket that will be displayed in the template plugin instead of the original basket.
-	 */
-	public function boot(Twig $twig, Dispatcher $eventDispatcher)
+    <?php
+     
+    namespace Theme\Providers;
+     
+    use IO\Helper\TemplateContainer;
+    use IO\Helper\ComponentContainer;
+    use Plenty\Plugin\Events\Dispatcher;
+    use Plenty\Plugin\ServiceProvider;
+    use Plenty\Plugin\Templates\Twig;
+     
+    class ThemeServiceProvider extends ServiceProvider
     {
-        $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
+      const PRIORITY = 0;
+     
+    	/**
+    	 * Register the service provider.
+    	 */
+    	public function register()
+    	{
+     
+    	}
+     
+        /**
+    	 * Boot a template for the basket that will be displayed in the template plugin instead of the original basket.
+    	 */
+    	public function boot(Twig $twig, Dispatcher $eventDispatcher)
         {
-            if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
+            $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
             {
-                $container->setNewComponentTemplate('Theme::content.SingleItem');
-            }
-        }, self::PRIORITY);
+                if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
+                {
+                    $container->setNewComponentTemplate('Theme::content.SingleItem');
+                }
+            }, self::PRIORITY);
+        }
     }
