@@ -1,4 +1,4 @@
-    <?php
+<?php
      
     namespace Theme\Providers;
      
@@ -25,12 +25,12 @@
     	 */
     	public function boot(Twig $twig, Dispatcher $eventDispatcher)
         {
-            $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
-            {
-                if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
-                {
-                    $container->setNewComponentTemplate('Theme::content.SingleItem');
-                }
-            }, self::PRIORITY);
+             $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
+ 	 {
+  if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
+ 			 {
+  $container->setNewComponentTemplate('Theme::content.SingleItem');
+ 			 }
+ }, self::PRIORITY);
         }
     }
