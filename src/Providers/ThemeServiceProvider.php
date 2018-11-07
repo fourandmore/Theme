@@ -1,53 +1,35 @@
-    <?php
-     
-    namespace Theme\Providers;
-     
-   use Ceres\Caching\NavigationCacheSettings;
-use Ceres\Caching\SideNavigationCacheSettings;
-use Ceres\Config\CeresConfig;
-use Ceres\Contexts\CategoryContext;
-use Ceres\Contexts\CategoryItemContext;
-use Ceres\Contexts\GlobalContext;
-use Ceres\Contexts\ItemSearchContext;
-use Ceres\Contexts\ItemWishListContext;
-use Ceres\Contexts\OrderConfirmationContext;
-use Ceres\Contexts\OrderReturnContext;
-use Ceres\Contexts\PasswordResetContext;
-use Ceres\Contexts\SingleItemContext;
-use Ceres\Extensions\TwigStyleScriptTagFilter;
-use Ceres\Hooks\CeresAfterBuildPlugins;
-use IO\Extensions\Functions\Partial;
-use IO\Helper\CategoryKey;
-use IO\Helper\CategoryMap;
+<?php
+ 
+namespace Theme\Providers;
+ 
 use IO\Helper\TemplateContainer;
-use IO\Services\ContentCaching\Services\Container;
-use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
-use Plenty\Modules\Plugin\Events\AfterBuildPlugins;
+use IO\Helper\ComponentContainer;
+use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Templates\Twig;
-use Plenty\Plugin\Events\Dispatcher;
-use Plenty\Plugin\ConfigRepository;
-     
-    class ThemeServiceProvider extends ServiceProvider
+ 
+class ThemeServiceProvider extends ServiceProvider
+{
+  const PRIORITY = 0;
+ 
+	/**
+	 * Register the service provider.
+	 */
+	public function register()
+	{
+ 
+	}
+ 
+    /**
+	 * Boot a template for the basket that will be displayed in the template plugin instead of the original basket.
+	 */
+	public function boot(Twig $twig, Dispatcher $eventDispatcher)
     {
-     
-    	/**
-    	 * Register the service provider.
-    	 */
-    	public function register()
-    	{
-     
-    	}
-     
-        /**
-    	 * Boot a template for the basket that will be displayed in the template plugin instead of the original basket.
-    	 */
-    	public function boot(Twig $twig, Dispatcher $eventDispatcher)
+        $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
         {
-            $eventDispatcher->listen('IO.tpl.basket', function(TemplateContainer $container, $templateData)
+            if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
             {
-                $container->setTemplate('Theme::content.ReleaseDate');
-                return false;
-            }, 0);
-        }
+                $container->setNewComponentTemplate('Theme::content.SingleItem');
+            }
+        }, self::PRIORITY);
     }
