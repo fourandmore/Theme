@@ -11,8 +11,8 @@
         [
             {
                 "key"           :"Theme\\Containers\\ThemeContainer",
-                "name"          :"Dark background",
-                "description"   :"Change the background colour of the Ceres template"
+                "name"          :"Erscheinungsdatum",
+                "description"   :"Zeigt das Erscheinungsdatum an."
             }
         ]
     }
