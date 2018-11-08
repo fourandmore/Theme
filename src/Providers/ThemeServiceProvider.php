@@ -39,7 +39,7 @@
 	
 			$eventDispatcher->listen('IO.init.templates', function(Partial $partial)
         {
-           $partial->set('navbar {% if useMegaMenu %} megamenu{%endif%}', 'Theme::Content.ThemeNavigation.twig');
+           $partial->set('navbar', 'Theme::Content.ThemeNavigation.twig');
         }, 0);
         return false;
 		}
