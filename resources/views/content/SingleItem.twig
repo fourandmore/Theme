@@ -96,10 +96,12 @@
                             ${ currentVariation.variation.availability.names.name }
                         </span>
                     </span>
+					
+					<!-- Erscheinungsdatum -->
                     <div v-if="new Date(currentVariation.variation.releasedAt) > Date.now()">
     Verfügbar ab: ${ new Date(currentVariation.variation.releasedAt).toLocaleDateString() }
  </div>
-                    
+                    <!-- Ende Erscheinungsdatum -->
 
 
                     <div class="row m-y-1">
@@ -114,6 +116,7 @@
                                 ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable"
                             }
                         ) }}
+						
                         <slot name="AfterAddToBasket"></slot>
                     </div>
 

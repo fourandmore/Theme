@@ -1,6 +1,6 @@
     <?php
      
-    namespace Theme\Providers;
+    namespace Erscheinungsdatum\Providers;
      
     use IO\Helper\TemplateContainer;
     use IO\Helper\ComponentContainer;
@@ -8,7 +8,7 @@
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
      
-    class ThemeServiceProvider extends ServiceProvider
+    class ErscheinungsdatumServiceProvider extends ServiceProvider
     {
       const PRIORITY = 0;
      
@@ -29,7 +29,7 @@
             {
                 if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
                 {
-                    $container->setNewComponentTemplate('Theme::content.SingleItem');
+                    $container->setNewComponentTemplate('Erscheinungsdatum::content.SingleItem');
                 }
             }, self::PRIORITY);
         }

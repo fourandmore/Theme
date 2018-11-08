@@ -1,16 +1,16 @@
     {
         "name"                  :"Theme",
         "description"           :"Basic theme plugin",
-        "namespace"             :"Theme",
+        "namespace"             :"Erscheinungsdatum",
         "author"                :"Your name",
         "keywords"              : ["theme", "Ceres", "template"],
         "type"                  :"theme",
         "require"               : [],
-        "serviceProvider"       :"Theme\\Providers\\ThemeServiceProvider",
+        "serviceProvider"       :"Erscheinungsdatum\\Providers\\ErscheinungsdatumServiceProvider",
         "dataProviders"         :
         [
             {
-                "key"           :"Theme\\Containers\\ThemeContainer",
+                "key"           :"Erscheinungsdatum\\Containers\\ErscheinungsdatumContainer",
                 "name"          :"Erscheinungsdatum",
                 "description"   :"Zeigt das Erscheinungsdatum an."
             }
