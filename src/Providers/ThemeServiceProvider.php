@@ -2,12 +2,13 @@
      
     namespace Theme\Providers;
      
-    use IO\Helper\TemplateContainer;
+   	use IO\Extensions\Functions\Partial;
+	use IO\Helper\TemplateContainer;
     use IO\Helper\ComponentContainer;
     use Plenty\Plugin\Events\Dispatcher;
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
-	use IO\Extensions\Functions\Partial;
+
 
      
     class ThemeServiceProvider extends ServiceProvider
@@ -37,7 +38,7 @@
 			
 			$eventDispatcher->listen('IO.init.templates', function(Partial $partial)
         {
-           $partial->set('navbar', 'Theme::Content.ThemeNavigation.twig');
+           $partial->set('top-bar', 'Theme::Content.ThemeDefaultHeader.twig');
         }, 0);
         return false;
 			
