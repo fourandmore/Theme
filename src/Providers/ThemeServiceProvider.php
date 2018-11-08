@@ -7,6 +7,8 @@
     use Plenty\Plugin\Events\Dispatcher;
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
+	use IO\Extensions\Functions\Partial;
+
      
     class ThemeServiceProvider extends ServiceProvider
     {
@@ -32,16 +34,14 @@
   $container->setNewComponentTemplate('Theme::content.SingleItem');
  			 }
  }, self::PRIORITY);
-			}
 			
-		    	public function boot(Twig $twig, Dispatcher $eventDispatcher)
-        {
-	
 			$eventDispatcher->listen('IO.init.templates', function(Partial $partial)
         {
            $partial->set('navbar', 'Theme::Content.ThemeNavigation.twig');
         }, 0);
         return false;
-		}
+			
+			}
+
 
     }
