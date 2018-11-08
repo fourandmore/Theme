@@ -37,7 +37,7 @@
 			
 			$eventDispatcher->listen('IO.init.templates', function(Partial $partial)
         {
-           $partial->set('navbar', 'Theme::Content.ThemeNavigation.twig');
+           $partial->set('top-bar', 'Theme::Content.ThemeDefaultHeader.twig');
         }, 0);
         return false;
 			
