@@ -23,14 +23,11 @@
         /**
     	 * Boot a template for the basket that will be displayed in the template plugin instead of the original basket.
     	 */
-    	public function boot(Twig $twig, Dispatcher $eventDispatcher)
-        {
-             $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
+ $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
  	 {
   if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
  			 {
   $container->setNewComponentTemplate('Theme::content.SingleItem');
  			 }
  }, self::PRIORITY);
-        }
     }
