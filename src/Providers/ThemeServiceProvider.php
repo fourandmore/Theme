@@ -2,12 +2,13 @@
      
     namespace Theme\Providers;
      
-    use IO\Helper\TemplateContainer;
+   	use IO\Extensions\Functions\Partial;
+	use IO\Helper\TemplateContainer;
     use IO\Helper\ComponentContainer;
     use Plenty\Plugin\Events\Dispatcher;
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
-	use IO\Extensions\Functions\Partial;
+
 
      
     class ThemeServiceProvider extends ServiceProvider
