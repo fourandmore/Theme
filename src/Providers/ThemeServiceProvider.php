@@ -36,13 +36,4 @@
  			 }
  }, self::PRIORITY);
 			
-			$eventDispatcher->listen('IO.init.templates', function(Partial $partial)
-        {
-           $partial->set('top-bar', 'Theme::Content.ThemeDefaultHeader.twig');
-        }, 0);
-        return false;
-			
-			}
-
-
     }
