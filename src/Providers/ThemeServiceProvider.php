@@ -1,15 +1,12 @@
-<?php
+    <?php
      
     namespace Theme\Providers;
      
-   	use IO\Extensions\Functions\Partial;
-	use IO\Helper\TemplateContainer;
+    use IO\Helper\TemplateContainer;
     use IO\Helper\ComponentContainer;
     use Plenty\Plugin\Events\Dispatcher;
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
-
-
      
     class ThemeServiceProvider extends ServiceProvider
     {
@@ -28,12 +25,12 @@
     	 */
     	public function boot(Twig $twig, Dispatcher $eventDispatcher)
         {
-             $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
- 	 {
-  if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
- 			 {
-  $container->setNewComponentTemplate('Theme::content.SingleItem');
- 			 }
- }, self::PRIORITY);
-			
+            $eventDispatcher->listen('IO.Component.Import', function (ComponentContainer $container)
+            {
+                if ($container->getOriginComponentTemplate()=='Ceres::Item.Components.SingleItem')
+                {
+                    $container->setNewComponentTemplate('Theme::content.SingleItem');
+                }
+            }, self::PRIORITY);
+        }
     }
