@@ -8,7 +8,7 @@
     use Plenty\Plugin\ServiceProvider;
     use Plenty\Plugin\Templates\Twig;
      
-    class ErscheinungsdatumServiceProvider extends ServiceProvider
+    class ThemeServiceProvider extends ServiceProvider
     {
       const PRIORITY = 0;
      
